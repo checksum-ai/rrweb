@@ -39,7 +39,7 @@ export {
   _mirror as mirror,
   utils,
 };
-const VERSION = '0.0.3';
+const VERSION = '0.0.3-beta.1';
 
 if (typeof window !== 'undefined') {
   (window as any).checksumRRWeb = {
