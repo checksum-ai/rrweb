@@ -31,6 +31,7 @@
      * @see https://vitejs.dev/guide/features.html#isolatedmodules
      */
     "isolatedModules": true,
+    "resolveJsonModule": true,
 
     "types": [
       "node",

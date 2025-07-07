@@ -558,6 +558,22 @@ export function buildNodeWithSN(
         } else {
           node.appendChild(childNode);
         }
+      } else if (
+        n.type === NodeType.Document &&
+        childN.type === NodeType.DocumentType
+      ) {
+        try {
+          // DocumentType nodes must be inserted before the root element
+          // If there's already a root element, insert before it
+          if (node.firstChild && node.firstChild.nodeType === 1) {
+            // 1 = Element node type
+            node.insertBefore(childNode, node.firstChild);
+          } else {
+            node.appendChild(childNode);
+          }
+        } catch (e) {
+          console.error('fix for DOCTYPE inserting failed');
+        }
       } else {
         node.appendChild(childNode);
       }

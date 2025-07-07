@@ -14,6 +14,7 @@ import rebuild, {
   adaptCssForReplay,
   createCache,
 } from './rebuild';
+import packageJson from '../package.json';
 export * from './types';
 export * from './utils';
 
@@ -33,3 +34,12 @@ export {
   IGNORED_NODE,
   genId,
 };
+
+const VERSION = (packageJson as { version: string }).version;
+
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+  (window as any).checksumRRWeb = {
+    version: VERSION,
+  };
+}
