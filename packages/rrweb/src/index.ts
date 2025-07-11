@@ -8,6 +8,7 @@ import {
 import canvasMutation from './replay/canvas';
 import { _mirror } from './utils';
 import * as utils from './utils';
+import packageJson from '../package.json';
 
 export {
   EventType,
@@ -39,9 +40,10 @@ export {
   _mirror as mirror,
   utils,
 };
-const VERSION = '0.0.3-beta.1';
+const VERSION = (packageJson as { version: string }).version;
 
 if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
   (window as any).checksumRRWeb = {
     version: VERSION,
   };
